@@ -100,7 +100,7 @@ def photo(q):
         thresh_lightGreen = cv2.inRange(hsv_lightGreen, hsv_min_lightGreen, hsv_max_lightGreen)
         thresh_darkGreen = cv2.inRange(hsv_darkGreen, hsv_min_darkGreen, hsv_max_darkGreen)
         thresh_purple = cv2.inRange(hsv_purple, hsv_min_purple, hsv_max_purple)
-
+        
         # вычисляем моменты изображения
         moments_lightGreen = cv2.moments(thresh_lightGreen, 1)
         bM01 = moments_lightGreen['m01']
@@ -211,8 +211,8 @@ def upL():
 def downL():
     mb_3.position = 0
     md_3.position = 0
-    mb_3.run_direct(duty_cycle_sp = -50)
-    md_3.run_direct(duty_cycle_sp = -50)
+    mb_3.run_direct(duty_cycle_sp = -15)
+    md_3.run_direct(duty_cycle_sp = -15)
     sleep(5)
     mb_3.stop( stop_action = 'brake')
     md_3.stop( stop_action = 'brake')
@@ -280,7 +280,7 @@ def PravoPravo():
     md_2.position = 0
     ma_2.position = 0
     GO = GY.value()
-    while GY.value() > (GO -  75):
+    while GY.value() > (GO -  88):
         md_2.run_direct(duty_cycle_sp = 75)
         ma_2.run_direct(duty_cycle_sp = 75)
         mc_2.run_direct(duty_cycle_sp = -75)
@@ -301,7 +301,7 @@ def Rasvorot():
     md_2.position = 0
     ma_2.position = 0
     GO = GY.value()
-    while GY.value() > (GO -  170):
+    while GY.value() > (GO -  172):
         md_2.run_direct(duty_cycle_sp = 75)
         ma_2.run_direct(duty_cycle_sp = 75)
         mc_2.run_direct(duty_cycle_sp = -75)
@@ -343,88 +343,220 @@ def Rasvorot():
 
 # грамма
 
-stage = "turn"
+
+
+
+
+
 
 ma_2.position = 0
 mb_2.position = 0
 mc_2.position = 0
 md_2.position = 0
 
-while True:
-    try:
-        print(q.get())
-        x_lightGreen = q.get()[0]
-        y_lightGreen = q.get()[1]
-        x_darkGreen = q.get()[2]
-        y_darkGreen = q.get()[3]
-        x_purple = q.get()[4]
-        y_purple = q.get()[5]
+while mc_2.position < 6000:
+        md_2.run_direct(duty_cycle_sp = -75)
+        ma_2.run_direct(duty_cycle_sp = 75)
+        mc_2.run_direct(duty_cycle_sp = 75)
+        mb_2.run_direct(duty_cycle_sp = -75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+PravoPravo()
+
+
+
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+while md_2.position < 3500:
+        md_2.run_direct(duty_cycle_sp = 75)
+        ma_2.run_direct(duty_cycle_sp = -75)
+        mc_2.run_direct(duty_cycle_sp = -75)
+        mb_2.run_direct(duty_cycle_sp = 75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+downL()
+sleep(5)
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+while ma_2.position < 3500:
+        md_2.run_direct(duty_cycle_sp = -75)
+        ma_2.run_direct(duty_cycle_sp = 75)
+        mc_2.run_direct(duty_cycle_sp = 75)
+        mb_2.run_direct(duty_cycle_sp = -75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+PravoPravo()
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+while ma_2.position < 6000:
+        md_2.run_direct(duty_cycle_sp = -75)
+        ma_2.run_direct(duty_cycle_sp = 75)
+        mc_2.run_direct(duty_cycle_sp = 75)
+        mb_2.run_direct(duty_cycle_sp = -75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+sleep(8)
+Rasvorot()
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+while mc_2.position < 6000:
+        md_2.run_direct(duty_cycle_sp = -75)
+        ma_2.run_direct(duty_cycle_sp = 75)
+        mc_2.run_direct(duty_cycle_sp = 75)
+        mb_2.run_direct(duty_cycle_sp = -75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+LevoLevo()
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+while ma_2.position < 3500:
+        md_2.run_direct(duty_cycle_sp = -75)
+        ma_2.run_direct(duty_cycle_sp = 75)
+        mc_2.run_direct(duty_cycle_sp = 75)
+        mb_2.run_direct(duty_cycle_sp = -75)
+        sleep(0.05)                                                                            
+ma_2.stop( stop_action = 'brake')
+mb_2.stop( stop_action = 'brake')
+mc_2.stop( stop_action = 'brake')
+md_2.stop( stop_action = 'brake')
+ma_2.position = 0
+mb_2.position = 0
+mc_2.position = 0
+md_2.position = 0
+
+
+
+
+
+
+
+
+
+
+#         print(q.get())
+#         x_lightGreen = q.get()[0]
+#         y_lightGreen = q.get()[1]
+#         x_darkGreen = q.get()[2]
+#         y_darkGreen = q.get()[3]
+#         x_purple = q.get()[4]
+#         y_purple = q.get()[5]
         
-        # line_equation(points=[(q.get()[0], q.get()[1]), (q.get()[2], q.get()[3])])
+#         # line_equation(points=[(q.get()[0], q.get()[1]), (q.get()[2], q.get()[3])])
 
-        if (stage == "turn"):
+#         if (stage == "turn"):
 
-        # координаты A - центр робота
-        # x_darkGreen 
-        # y_darkGreen 
-        # координаты B - перед робота
-        # x_lightGreen 
-        # y_lightGreen
-        # координаты C - куда надо повернуться
-        # y_purple
-        # x_purple
+#         # координаты A - центр робота
+#         # x_darkGreen 
+#         # y_darkGreen 
+#         # координаты B - перед робота
+#         # x_lightGreen 
+#         # y_lightGreen
+#         # координаты C - куда надо повернуться
+#         # y_purple
+#         # x_purple
             
 
-            c = sqrt((x_darkGreen-x_lightGreen)*(x_darkGreen-x_lightGreen) + (y_darkGreen-y_lightGreen)*(y_darkGreen-y_lightGreen))
-            b = sqrt((x_darkGreen-x_purple)*(x_darkGreen-x_purple) + (y_darkGreen-y_purple)*(y_darkGreen-y_purple))
-            a = sqrt((x_purple-x_lightGreen)*(x_purple-x_lightGreen) + (y_purple-y_lightGreen)*(y_purple-y_lightGreen))
+#             c = sqrt((x_darkGreen-x_lightGreen)*(x_darkGreen-x_lightGreen) + (y_darkGreen-y_lightGreen)*(y_darkGreen-y_lightGreen))
+#             b = sqrt((x_darkGreen-x_purple)*(x_darkGreen-x_purple) + (y_darkGreen-y_purple)*(y_darkGreen-y_purple))
+#             a = sqrt((x_purple-x_lightGreen)*(x_purple-x_lightGreen) + (y_purple-y_lightGreen)*(y_purple-y_lightGreen))
 
-            # print(a, b, c)
+#             # print(a, b, c)
 
-            a2 = a*a
-            b2 = b*b
-            c2 = c*c
+#             a2 = a*a
+#             b2 = b*b
+#             c2 = c*c
 
             
-            t = (x_lightGreen*x_purple+ y_lightGreen*y_purple)/(((x_lightGreen*x_lightGreen+ y_lightGreen* y_lightGreen)**0.5)*((x_purple*+y_purple*y_purple)**0.5))
+#             t = (x_lightGreen*x_purple+ y_lightGreen*y_purple)/(((x_lightGreen*x_lightGreen+ y_lightGreen* y_lightGreen)**0.5)*((x_purple*+y_purple*y_purple)**0.5))
 
-            q = 1.5707963267 - round(math.acos(t),6)
-            w = round(math.acos(t),6)
-            print(t,q,w)
-# if q < w:
-#     print(q)
-# else:
-#     print(w)
-
-
-            angle_alpha = degrees(acos((b2+c2-a2)/(2*b*c)))
-            # angle_alpha = calcAngle(x_darkGreen,y_darkGreen,x_lightGreen,y_lightGreen,x_purple,y_purple)
-            print(angle_alpha)
+#             q = 1.5707963267 - round(math.acos(t),6)
+#             w = round(math.acos(t),6)
+#             print(t,q,w)
+# # if q < w:
+# #     print(q)
+# # else:
+# #     print(w)
 
 
-            # ошибка для регулятора
-            k = 0.8
-            # error = angle_alpha - 0
-            # u = k*error
+#             angle_alpha = degrees(acos((b2+c2-a2)/(2*b*c)))
+#             # angle_alpha = calcAngle(x_darkGreen,y_darkGreen,x_lightGreen,y_lightGreen,x_purple,y_purple)
+#             print(angle_alpha)
 
 
-            # md_2.run_direct(duty_cycle_sp = -u)
-            # ma_2.run_direct(duty_cycle_sp = -u)
-            # mc_2.run_direct(duty_cycle_sp = u)
-            # mb_2.run_direct(duty_cycle_sp = u)
+#             # ошибка для регулятора
+#             k = 0.8
+#             # error = angle_alpha - 0
+#             # u = k*error
 
-            # if (abs(error) < 15):
-                # stage = "move"                                                                  
+
+#             # md_2.run_direct(duty_cycle_sp = -u)
+#             # ma_2.run_direct(duty_cycle_sp = -u)
+#             # mc_2.run_direct(duty_cycle_sp = u)
+#             # mb_2.run_direct(duty_cycle_sp = u)
+
+#             # if (abs(error) < 15):
+#                 # stage = "move"                                                                  
             
-            print(GY.value())
-            sleep(0.5)
+#             print(GY.value())
+#             sleep(0.5)
         
-        elif (stage == "move"):
-            exit()
+#         elif (stage == "move"):
+#             exit()
 
       
-    except KeyboardInterrupt:
-        sys.exit(1)
+#     except KeyboardInterrupt:
+#         sys.exit(1)
       
             
     #     md.position = 0
